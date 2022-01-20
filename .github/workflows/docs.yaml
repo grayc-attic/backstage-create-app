@@ -1,0 +1,29 @@
+name: Documentation
+
+"on":
+  workflow_dispatch: {}
+  push:
+    paths:
+      - .github/workflows/docs.yaml
+      - docs/**
+      - mkdocs.yml
+      - README.md
+
+jobs:
+
+  lint-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ibiqlik/action-yamllint@v3
+        with:
+          format: colored
+          strict: true
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker://avtodev/markdown-lint:v1
+        with:
+          args: /github/workspace

@@ -2,7 +2,12 @@ name: Build
 
 "on":
   workflow_dispatch: {}
-  push: {}
+  push:
+    paths-ignore:
+      - .github/workflows/docs.yaml
+      - docs/**
+      - mkdocs.yml
+      - README.md
 
 jobs:
 

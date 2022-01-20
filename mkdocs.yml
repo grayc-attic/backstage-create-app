@@ -1,0 +1,7 @@
+site_name: DevOps
+
+nav:
+  - Update: update.md
+
+plugins:
+  - techdocs-core

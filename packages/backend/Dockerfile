@@ -11,6 +11,11 @@
 
 FROM node:16-buster-slim
 
+RUN apt-get -qq update \
+  && apt-get -qq install -y --no-install-recommends python3-pip python3-setuptools \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip3 install --quiet --no-cache-dir mkdocs-techdocs-core==0.2.2
+
 WORKDIR /app
 
 # Copy repo skeleton first, to avoid unnecessary docker cache invalidation.

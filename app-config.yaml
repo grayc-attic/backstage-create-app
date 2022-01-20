@@ -26,6 +26,37 @@ backend:
     store: memory
     workingDirectory: /tmp/backstage
 
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+
+auth:
+  environment: production
+  providers:
+    github:
+      production:
+        clientId: ${GITHUB_CLIENT_ID}
+        clientSecret: ${GITHUB_CLIENT_SECRET}
+
+catalog:
+  rules:
+    - allow:
+        - Group
+        - User
+        - Component
+        - API
+        - Domain
+        - Resource
+        - Location
+        - System
+        - Template
+  locations:
+    - type: github-org
+      target: https://github.com/grayc-de
+    - type: github-discovery
+      target: https://github.com/grayc-de
+
 # http://backstage.io/docs/features/techdocs/configuration
 techdocs:
   builder: local

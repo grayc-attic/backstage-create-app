@@ -30,7 +30,7 @@ COPY --chown=node app-config.yaml ./
 ADD --chown=node packages/backend/dist/bundle.tar.gz ./
 
 # Run as non-root user
-RUN usermod --uid 1000 node && chown node packages/app/dist/* -R
+RUN usermod --uid 1000 node && chown node /app -R
 USER 1000
 
 CMD ["node", "packages/backend", "--config", "app-config.yaml"]

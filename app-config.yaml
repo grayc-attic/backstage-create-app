@@ -4,10 +4,10 @@
 #
 
 organization:
-  name: My Company
+  name: GrayC GmbH
 
 app:
-  title: Scaffolded Backstage App
+  title: Backstage
   baseUrl: http://localhost:3000
 
 backend:

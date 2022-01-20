@@ -3,6 +3,7 @@
 Update versions:
 
 ```sh
+yarn backstage-cli versions:check --fix
 yarn backstage-cli versions:bump
 ```
 

@@ -1,3 +1,6 @@
 node_modules
 dist
 dist-types
+backstage.env
+app-config.local.yaml
+app-config.secret.yaml

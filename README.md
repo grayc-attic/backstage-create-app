@@ -1,12 +1,8 @@
-# [Backstage](https://backstage.io)
+# [Backstage](https://backstage.grayc.de)
 
 [![Build](https://github.com/grayc-de/backstage/actions/workflows/build.yaml/badge.svg)](https://github.com/grayc-de/backstage/actions/workflows/build.yaml)
 
-This is your newly scaffolded Backstage App, Good Luck!
+Content:
 
-To start the app, run:
-
-```sh
-yarn install
-yarn dev
-```
+* [Development](docs/development.md)
+* [Update](docs/update.md)

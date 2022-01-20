@@ -1,0 +1,19 @@
+#
+# print schema: yarn backstage-cli config:schema
+# check schema: yarn backstage-cli config:check
+#
+
+integrations:
+  github:
+    - host: github.com
+      token:
+        $include: ./app-config.secret.yaml#GITHUB_TOKEN
+
+auth:
+  providers:
+    github:
+      production:
+        clientId:
+          $include: ./app-config.secret.yaml#GITHUB_CLIENT_ID
+        clientSecret:
+          $include: ./app-config.secret.yaml#GITHUB_CLIENT_SECRET

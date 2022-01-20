@@ -1,5 +1,17 @@
 .git
+.gitignore
+.github
+.markdownlint.yaml
+.markdownlintignore
+.yamllint
+.envrc
+app-config.dev.yaml
+app-config.local.yaml
+app-config.secret.yaml
 node_modules
 packages
 !packages/backend/dist
 plugins
+docs
+mkdocs.yaml
+README.md

@@ -1,4 +1,4 @@
-# [Backstage](https://backstage.grayc.de)
+# Backstage
 
 [![Build](https://github.com/grayc-de/backstage/actions/workflows/build.yaml/badge.svg)](https://github.com/grayc-de/backstage/actions/workflows/build.yaml)
 

@@ -1,6 +1,7 @@
-site_name: DevOps
+site_name: Backstage
 
 nav:
+  - Home: index.md
   - Development: development.md
   - Update: update.md
 

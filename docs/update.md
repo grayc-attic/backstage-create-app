@@ -3,8 +3,9 @@
 Update versions:
 
 ```sh
+yarn backstage-cli versions:bump --pattern '@{backstage,roadiehq}/*'
 yarn backstage-cli versions:check --fix
-yarn backstage-cli versions:bump
+rm yarn.lock && yarn install && yarn tsc && yarn build
 ```
 
 Track updates in example app:

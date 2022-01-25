@@ -111,7 +111,7 @@ const overviewContent = (
       <EntityAboutCard variant="gridItem" />
     </Grid>
     <Grid item md={6} xs={12}>
-      <EntityCatalogGraphCard variant="gridItem" height={400} />
+      <EntityCatalogGraphCard variant="fullHeight" zoom="enable-on-click" />
     </Grid>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
@@ -231,11 +231,11 @@ const apiPage = (
     <EntityLayout.Route path="/" title="Overview">
       <Grid container spacing={3}>
         {entityWarningContent}
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <EntityAboutCard />
         </Grid>
-        <Grid item md={4} xs={12}>
-          <EntityLinksCard />
+        <Grid item md={6} xs={12}>
+          <EntityCatalogGraphCard variant="fullHeight" zoom="enable-on-click" />
         </Grid>
         <Grid container item md={12}>
           <Grid item md={6}>

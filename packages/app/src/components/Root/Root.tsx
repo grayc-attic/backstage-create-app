@@ -23,20 +23,26 @@ import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
 import { NavLink } from 'react-router-dom';
-import { Settings as SidebarSettings } from '@backstage/plugin-user-settings';
+import {
+  Settings as SidebarSettings,
+  UserSettingsSignInAvatar,
+} from '@backstage/plugin-user-settings';
 import {
   SidebarSearchModal,
   SearchContextProvider,
 } from '@backstage/plugin-search';
 import {
   Sidebar,
-  SidebarPage,
   sidebarConfig,
   SidebarContext,
-  SidebarItem,
   SidebarDivider,
+  SidebarGroup,
+  SidebarItem,
+  SidebarPage,
   SidebarSpace,
 } from '@backstage/core-components';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -75,20 +81,30 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
   <SidebarPage>
     <Sidebar>
       <SidebarLogo />
-      <SearchContextProvider>
-        <SidebarSearchModal />
-      </SearchContextProvider>
+      <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
+        <SearchContextProvider>
+          <SidebarSearchModal />
+        </SearchContextProvider>{' '}
+      </SidebarGroup>
       <SidebarDivider />
-      {/* Global nav, not org-specific */}
-      <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
-      <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-      <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
-      <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-      {/* End global nav */}
-      <SidebarDivider />
+      <SidebarGroup label="Menu" icon={<MenuIcon />}>
+        {/* Global nav, not org-specific */}
+        <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
+        <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
+        <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
+        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
+        {/* End global nav */}
+        <SidebarDivider />
+      </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />
-      <SidebarSettings />
+      <SidebarGroup
+        label="Settings"
+        icon={<UserSettingsSignInAvatar />}
+        to="/settings"
+      >
+        <SidebarSettings />
+      </SidebarGroup>
     </Sidebar>
     {children}
   </SidebarPage>

@@ -42,6 +42,7 @@ import {
   hasCatalogProcessingErrors,
   isOrphan,
 } from '@backstage/plugin-catalog';
+import { EntityCatalogGraphCard } from '@backstage/plugin-catalog-graph';
 import {
   isGithubActionsAvailable,
   EntityGithubActionsContent,
@@ -107,6 +108,9 @@ const overviewContent = (
     {entityWarningContent}
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
+    </Grid>
+    <Grid item md={6} xs={12}>
+      <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />

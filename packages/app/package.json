@@ -17,6 +17,7 @@
     "@backstage/plugin-catalog-import": "^0.7.10",
     "@backstage/plugin-catalog-react": "^0.6.12",
     "@backstage/plugin-github-actions": "^0.4.33",
+    "@backstage/plugin-kubernetes": "^0.5.5",
     "@backstage/plugin-org": "^0.4.0",
     "@backstage/plugin-scaffolder": "^0.12.0",
     "@backstage/plugin-search": "^0.6.0",

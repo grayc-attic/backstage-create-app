@@ -57,6 +57,11 @@ catalog:
     - type: github-discovery
       target: https://github.com/grayc-de
 
+kubernetes:
+  serviceLocatorMethod:
+    type: multiTenant
+  clusterLocatorMethods: []
+
 # http://backstage.io/docs/features/techdocs/configuration
 techdocs:
   builder: local

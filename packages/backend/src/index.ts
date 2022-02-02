@@ -25,6 +25,7 @@ import app from './plugins/app';
 import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import healthcheck from './plugins/healthcheck';
+import kubernetes from './plugins/kubernetes';
 import scaffolder from './plugins/scaffolder';
 import proxy from './plugins/proxy';
 import techdocs from './plugins/techdocs';
@@ -74,6 +75,7 @@ async function main() {
   const createEnv = makeCreateEnv(config);
 
   const healthcheckEnv = useHotMemoize(module, () => createEnv('healthcheck'));
+  const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
   const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));
   const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));
   const authEnv = useHotMemoize(module, () => createEnv('auth'));
@@ -85,6 +87,7 @@ async function main() {
   const apiRouter = Router();
   apiRouter.use('/catalog', await catalog(catalogEnv));
   apiRouter.use('/scaffolder', await scaffolder(scaffolderEnv));
+  apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
   apiRouter.use('/auth', await auth(authEnv));
   apiRouter.use('/techdocs', await techdocs(techdocsEnv));
   apiRouter.use('/proxy', await proxy(proxyEnv));

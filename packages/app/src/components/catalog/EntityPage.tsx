@@ -52,6 +52,7 @@ import {
   EntityMembersListCard,
   EntityOwnershipCard,
 } from '@backstage/plugin-org';
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import {
   Direction,
@@ -127,6 +128,9 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent />
+    </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
@@ -167,6 +171,9 @@ const websiteEntityPage = (
     </EntityLayout.Route>
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">

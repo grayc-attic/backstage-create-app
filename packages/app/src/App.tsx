@@ -13,7 +13,7 @@ import {
 import { ScaffolderPage, scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { orgPlugin } from '@backstage/plugin-org';
 import { SearchPage } from '@backstage/plugin-search';
-import { CatalogGraphPage, catalogGraphPlugin } from '@backstage/plugin-catalog-graph';
+import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import {
   DefaultTechDocsHome,
   TechDocsIndexPage,
@@ -56,9 +56,6 @@ const app = createApp({
     bind(apiDocsPlugin.externalRoutes, {
       registerApi: catalogImportPlugin.routes.importPage,
     });
-    bind(catalogGraphPlugin.externalRoutes, {
-      catalogEntity: catalogPlugin.routes.catalogEntity,
-    });
     bind(scaffolderPlugin.externalRoutes, {
       registerComponent: catalogImportPlugin.routes.importPage,
     });
@@ -90,12 +87,12 @@ const routes = (
     />
     <Route path="/create" element={<ScaffolderPage />} />
     <Route path="/api-docs" element={<ApiExplorerPage />} />
-    <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/catalog-import" element={<CatalogImportPage />} />
     <Route path="/search" element={<SearchPage />}>
       {searchPage}
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
+    <Route path="/catalog-graph" element={<CatalogGraphPage />} />
   </FlatRoutes>
 );
 

@@ -8,10 +8,10 @@ yarn backstage-cli versions:check --fix
 rm yarn.lock && yarn install && yarn tsc && yarn build
 ```
 
-Track updates in example app:
+Track updates in example app in [backstage-create-app](https://github.com/kokuwaio/backstage-create-app/commits/main) or use:
 
 ```sh
-npx @backstage/create-app --path . 
+printf 'backstage\n\n\'| npx @backstage/create-app --path . --skip-install
 ```
 
 ## Links

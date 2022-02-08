@@ -38,6 +38,10 @@ auth:
       production:
         clientId: ${GITHUB_CLIENT_ID}
         clientSecret: ${GITHUB_CLIENT_SECRET}
+    google:
+      production:
+        clientId: ${GOOGLE_CLIENT_ID}
+        clientSecret: ${GOOGLE_CLIENT_SECRET}
 
 catalog:
   rules:
@@ -56,6 +60,8 @@ catalog:
       target: https://github.com/grayc-de
     - type: github-discovery
       target: https://github.com/grayc-de
+    - type: github-discovery
+      target: https://github.com/inoa-io
 
 kubernetes:
   serviceLocatorMethod:

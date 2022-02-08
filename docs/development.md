@@ -9,8 +9,8 @@ Add guest login in [App.tsx](https://github.com/grayc-de/backstage/blob/docs/pac
     <SignInPage
      {...props}
 -    auto
--    provider={githubProvider}/>
-+    providers={['guest', githubProvider]}/>
+-    providers={[githubProvider, googleProvider]}/>
++    providers={[githubProvider, googleProvider, 'guest']}/>
   ),
 ```
 

@@ -28,7 +28,7 @@ import { Root } from './components/Root';
 import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
-import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { githubAuthApiRef, googleAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInProviderConfig, SignInPage } from '@backstage/core-components';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { PermissionedRoute } from '@backstage/plugin-permission-react';
@@ -40,6 +40,12 @@ const githubProvider: SignInProviderConfig = {
   message: 'Sign in using GitHub',
   apiRef: githubAuthApiRef,
 };
+const googleProvider: SignInProviderConfig = {
+    id: 'google-auth-provider',
+    title: 'Google',
+    message: 'Sign in using Google',
+    apiRef: googleAuthApiRef,
+};
 const app = createApp({
   apis,
   components: {
@@ -47,7 +53,7 @@ const app = createApp({
       <SignInPage
         {...props}
         auto
-        provider={githubProvider}/>
+        providers={[githubProvider, googleProvider]}/>
     ),
   },
   bindRoutes({ bind }) {

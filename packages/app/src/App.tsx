@@ -25,11 +25,15 @@ import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
 
-import { AlertDisplay, OAuthRequestDialog } from '@backstage/core-components';
+import {
+  AlertDisplay,
+  OAuthRequestDialog,
+  SignInProviderConfig,
+  SignInPage,
+} from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
 import { githubAuthApiRef, googleAuthApiRef } from '@backstage/core-plugin-api';
-import { SignInProviderConfig, SignInPage } from '@backstage/core-components';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { PermissionedRoute } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common';
@@ -41,10 +45,10 @@ const githubProvider: SignInProviderConfig = {
   apiRef: githubAuthApiRef,
 };
 const googleProvider: SignInProviderConfig = {
-    id: 'google-auth-provider',
-    title: 'Google',
-    message: 'Sign in using Google',
-    apiRef: googleAuthApiRef,
+  id: 'google-auth-provider',
+  title: 'Google',
+  message: 'Sign in using Google',
+  apiRef: googleAuthApiRef,
 };
 const app = createApp({
   apis,
@@ -53,7 +57,8 @@ const app = createApp({
       <SignInPage
         {...props}
         auto
-        providers={[githubProvider, googleProvider]}/>
+        providers={[githubProvider, googleProvider]}
+      />
     ),
   },
   bindRoutes({ bind }) {

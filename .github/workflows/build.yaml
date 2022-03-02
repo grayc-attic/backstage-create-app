@@ -10,14 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
           token: ${{ secrets.GIT_ACTION_TOKEN }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: crazy-max/ghaction-import-gpg@v4.1.0
+      - uses: crazy-max/ghaction-import-gpg@v4
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
@@ -25,7 +25,7 @@ jobs:
           git_commit_gpgsign: true
       - run: printf 'backstage\n\n\'| npx @backstage/create-app --path backstage --skip-install
       - run: echo "COMMIT_MESSAGE=$(cat backstage/backstage.json | jq -r .version)" >> $GITHUB_ENV
-      - uses: stefanzweifel/git-auto-commit-action@v4.13.1
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: backstage/*
           commit_options: -S

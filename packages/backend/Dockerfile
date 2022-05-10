@@ -9,20 +9,22 @@
 #
 # Once the commands have been run, you can build the image using `yarn build-image`
 
-FROM node:16-buster-slim
-
-RUN apt-get -qq update \
-  && apt-get -qq install -y --no-install-recommends python3-pip python3-setuptools \
-  && rm -rf /var/lib/apt/lists/* \
-  && pip3 install --quiet --no-cache-dir mkdocs-techdocs-core==0.2.2
+FROM node:16-bullseye-slim
 
 WORKDIR /app
 
 # Copy repo skeleton first, to avoid unnecessary docker cache invalidation.
 # The skeleton contains the package.json of each package in the monorepo,
 # and along with yarn.lock and the root package.json, that's enough to run yarn install.
-COPY --chown=node yarn.lock package.json ./
-ADD --chown=node packages/backend/dist/skeleton.tar.gz ./
+COPY yarn.lock package.json packages/backend/dist/skeleton.tar.gz ./
+RUN tar xzf skeleton.tar.gz && rm skeleton.tar.gz
+
+# install sqlite3 dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential libsqlite3-dev python3 cmake g++ && \
+    rm -rf /var/lib/apt/lists/* && \
+    yarn config set python /usr/bin/python3
+
 RUN yarn install --frozen-lockfile --production --network-timeout 300000 && rm -rf "$(yarn cache dir)"
 
 # Then copy the rest of the backend bundle, along with any other files we might want.

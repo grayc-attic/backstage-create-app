@@ -27,6 +27,7 @@ jobs:
       - run: echo "COMMIT_MESSAGE=$(cat backstage/backstage.json | jq -r .version)" >> $GITHUB_ENV
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          add_options: -f
           file_pattern: backstage/*
           commit_options: -S
           commit_user_name: kokuwa.io Bot
